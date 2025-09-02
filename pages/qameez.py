@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+# Importing required library
+from mpl_interactions import ioff, panhandler, zoom_factory
 import streamlit as st
 import numpy as np
 
@@ -10,7 +12,9 @@ from drawcurve import curve
 plt.rcParams.update({'font.size': 35})
 
 data=getmeasurement()
-fig,ax=drawgrid(50, 18, 150)
+
+with plt.ioff():
+    fig,ax=drawgrid(50, 18, 150)
 
 shoulder=data[1][0]
 chest=data[1][1]
@@ -72,4 +76,10 @@ ax.text(15, 17, r'Body Measurements : ' + ' Length ' + str(length) + ' ,Shoulder
 #plt.show()
 st.set_page_config(layout="wide")
 #st.write(fig)
+
+disconnect_zoom = zoom_factory(ax)
+# Enable scrolling and panning with the help of MPL
+# Interactions library function like panhandler.
+pan_handler = panhandler(fig)
+
 st.pyplot(fig)
