@@ -1,5 +1,9 @@
 # home.py
+import csv
 import streamlit as st
 
 st.title("The Tailor Master")
-st.write("This is the main content of your home page.")
+st.write("Update Measurement For Kurti")
+
+
+
