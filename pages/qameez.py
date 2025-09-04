@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from mpl_interactions import ioff, panhandler, zoom_factory
 import streamlit as st
 
-from thegrid import drawgrid
+from thegridM import drawgridM
 from readMeasurement import getmeasurement
 from drawline import line
 from drawcurve import curve
@@ -11,12 +11,18 @@ from savemultipagePdf import multipagePdf
 from savesinglepagePdf import singlepageA4
 
 def frontnback():
-    plt.rcParams.update({'font.size': 35})
+    smallshift=0.5
+    linewid=0.8
+    sizeoffont=15
+    len=50
+    wid=16
+
+    #plt.rcParams.update({'font.size': 35})
 
     data=getmeasurement()
 
     with plt.ioff():
-        fig,ax=drawgrid(50, 18, 150)
+        fig,ax=drawgridM(len, wid, 150, smallshift,linewid, sizeoffont)
 
     shoulder=data[1][0]
     chest=data[1][1]
@@ -34,6 +40,11 @@ def frontnback():
     chestmark=halfshoulder-0.5
     waistmark=14
     hipmark=21
+
+    st.markdown("##### :rainbow[Indian Style Simple  Kurti - Front and Back Panel Draft]")
+   
+    measurementStr= 'Body Measurements : ' + ' Length ' + str(length) + ' ,Shoulder ' + str(shoulder) + ' ,Chest ' + str(chest) + ' ,Waist ' + str(waist) + ' ,Hip ' + str(hip)
+    st.markdown("###### :blue[{}]".format(measurementStr))       
 
     line(0,0,0,halfshoulder )
     line(chestmark,0,chestmark, quarterchest+0.5, '--', 'magenta')
@@ -66,11 +77,9 @@ def frontnback():
 
     line(0,0,float(length) + 2, 0 , 'dotted', 'red')
 
-    ax.text(21, 18, 'Indian Style Simple  Kurti', color='Red', fontsize=35)
     ax.text(21.5, 0.5, '...........cloth fold line..........',color='brown', fontsize=28)
     ax.text(21.5, quarterhip + 1.5 +0.5, '...........cut here..........',color='blue', fontsize=28)
-    ax.text(15, 17, r'Body Measurements : ' + ' Length ' + str(length) + ' ,Shoulder ' + str(shoulder) + ' ,Chest ' + str(chest) + ' ,Waist ' + str(waist) + ' ,Hip ' + str(hip), size=28)
-
+    
     st.set_page_config(layout="wide")
 
     st.pyplot(fig)

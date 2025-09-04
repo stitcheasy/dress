@@ -3,7 +3,8 @@ import csv
 import streamlit as st
 
 st.title("The Tailor Master")
-st.write("Update Measurement For Kurti")
+st.markdown("### :rainbow[Indian Style Simple Kruti Plazzo Cutting]")
+st.write("Just specify the measurements and print the drafts")
 
 
 

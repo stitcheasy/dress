@@ -6,7 +6,8 @@ from PIL import Image
 # Set Streamlit page config
 st.set_page_config(page_title="PDF Grid Viewer", layout="wide")
 
-st.title("📄 PDF Page Grid Viewer")
+#st.title(" PDF Page Grid Viewer 📄")
+st.markdown("### :rainbow[ PDF Pages 📄 Grid Viewer ]")
 
 uploaded_file = st.file_uploader("Upload a PDF file", type="pdf")
 
