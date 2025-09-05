@@ -10,7 +10,7 @@ def drawgridM(l=33.1, w=23.6, dpi=150, shift=0.8,linewidth=0.8, fontsize=6):
         
         fig = plt.figure(figsize=(l, w), dpi=150) # Default size, higher DPI
         ax = fig.add_subplot(111)
-
+        plt.rc('legend',fontsize=20,  loc='upper right')
         plt.yticks(fontsize=25, rotation=0)
         plt.xticks(fontsize=25, rotation=0)
 
@@ -32,4 +32,5 @@ def drawgridM(l=33.1, w=23.6, dpi=150, shift=0.8,linewidth=0.8, fontsize=6):
        
 
 #drawgridM(50, 30, 150, 0.6, 0.7, 7)
+
 #drawgrid() for A1 size figure 
